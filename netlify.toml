@@ -1,0 +1,9 @@
+# El juego ya está compilado con pygbag en build/web; solo hay que publicarlo.
+[build]
+  publish = "build/web"
+  command = ""
+
+[[headers]]
+  for = "/*.tar.gz"
+  [headers.values]
+    Content-Type = "application/gzip"
