@@ -7,7 +7,7 @@ from motor import trayectoria, analitico
 
 
 class Deslizador:
-    """Control deslizante para modificar un parámetro de la simulación."""
+    """Control deslizante para modificar un parmetro de la simulacin."""
 
     def __init__(self, x, y, ancho, minimo, maximo, valor, etiqueta, unidad):
         self.rect = pygame.Rect(x, y, ancho, 8)
@@ -129,12 +129,12 @@ def dibujar_grafica(pantalla, sim, fuentes):
         sim["alcance"], sim["h_max"], ancho, alto
     )
 
-    # Área de la gráfica
+    # rea de la grfica
     area = pygame.Rect(izquierda, arriba, ancho, alto)
     pygame.draw.rect(pantalla, COLOR_PANEL, area, border_radius=12)
     pygame.draw.rect(pantalla, COLOR_BORDE, area, 1, border_radius=12)
 
-    # Límites físicos visibles.
+    # Lmites fsicos visibles.
     max_x = max(sim["alcance"], 1)
     max_y = max(sim["h_max"], 1)
 
@@ -183,7 +183,7 @@ def dibujar_grafica(pantalla, sim, fuentes):
         (izquierda, abajo), (izquierda, arriba), 2
     )
 
-    # Títulos de ejes
+    # Ttulos de ejes
     texto_centrado(
         pantalla, "distancia horizontal (m)", fuente_pequena,
         COLOR_TEXTO_SEC, ((izquierda + derecha) // 2, abajo + 38)
@@ -236,7 +236,7 @@ def dibujar_grafica(pantalla, sim, fuentes):
             pantalla, COLOR_PROYECTIL, proyectil, 8
         )
 
-    # Título de la gráfica.
+    # Ttulo de la grfica.
     pantalla.blit(
         fuente_titulo.render("TRAYECTORIA DEL PROYECTIL", True, COLOR_TEXTO),
         (izquierda + 16, arriba + 10)
@@ -276,7 +276,7 @@ async def main():
     )
     s_ang = Deslizador(
         425, 116, 315, 1, 89,
-        ANGULO_DEFECTO, "Ángulo de lanzamiento", "°"
+        ANGULO_DEFECTO, "ngulo de lanzamiento", ""
     )
     boton = pygame.Rect(835, 91, 205, 58)
 
@@ -322,7 +322,7 @@ async def main():
                     s_ang.valor = ANGULO_DEFECTO
                     lanzar()
 
-        # Animación.
+        # Animacin.
         if sim["indice"] < len(sim["puntos"]) - 1:
             sim["indice"] += 1
 
@@ -341,7 +341,7 @@ async def main():
             (0, PANEL_ALTO), (ANCHO, PANEL_ALTO), 1
         )
 
-        # Título.
+        # Ttulo.
         pantalla.blit(
             fuente_grande.render(
                 "Simulador de lanzamiento parabolico",
@@ -352,7 +352,7 @@ async def main():
 
         pantalla.blit(
             fuente_pequena.render(
-                "ajusta los parámetros y presiona Lanza para iniciar la simulación",
+                "ajusta los parmetros y presiona Lanza para iniciar la simulacin",
                 True, COLOR_TEXTO_SEC
             ),
             (MARGEN, 52)
@@ -362,7 +362,7 @@ async def main():
         s_vel.dibujar(pantalla, fuente, fuente_valor)
         s_ang.dibujar(pantalla, fuente, fuente_valor)
 
-        # Botón con hover.
+        # Botn con hover.
         color_boton = (
             COLOR_BOTON_HOVER
             if boton.collidepoint(mouse)
@@ -380,7 +380,7 @@ async def main():
             COLOR_TEXTO, boton.center
         )
 
-        # Gráfica.
+        # Grfica.
         dibujar_grafica(
             pantalla, sim,
             (fuente_pequena, fuente_titulo, fuente_pequena)
@@ -410,14 +410,14 @@ async def main():
                 f"exacto: {a_e:.2f} m"
             ),
             (
-                "ALTURA MÁXIMA",
+                "ALTURA MXIMA",
                 f"{sim['h_max']:.2f} m",
                 f"exacto: {h_e:.2f} m"
             ),
             (
-                "ERROR NUMÉRICO",
+                "ERROR NUMRICO",
                 f"{err:.3f} %",
-                "comparacion con solución analítica"
+                "comparacion con solucin analtica"
             ),
         ]
 
